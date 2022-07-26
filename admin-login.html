@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Get started with a free and open source Tailwind CSS dashboard featuring a sidebar layout, advanced charts, and hundreds of components based on Flowbite">
+<meta name="author" content="Themesberg">
+<meta name="generator" content="Hugo 0.79.0">
+<title>NFTTrader Admin dashboard</title>
+<link rel="canonical" href="https://themesberg.com/product/tailwind-css/dashboard-windster">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://demo.themesberg.com/windster/app.css">
+<link rel="apple-touch-icon" sizes="180x180" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon.ico">
+<link rel="icon" type="image/png" href="favicon.ico">
+<link rel="manifest" href="https://demo.themesberg.com/windster/site.webmanifest">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@">
+<meta name="twitter:creator" content="@">
+<meta name="twitter:title" content="Tailwind CSS Sign in/Login Page - Windster">
+<meta name="twitter:description" content="Get started with a free and open source Tailwind CSS dashboard featuring a sidebar layout, advanced charts, and hundreds of components based on Flowbite">
+<meta name="twitter:image" content="https://demo.themesberg.com/windster/images/og-image.jpg">
+
+<meta property="og:url" content="https://demo.themesberg.com/windster/authentication/sign-in/">
+<meta property="og:title" content="Tailwind CSS Sign in/Login Page - Windster">
+<meta property="og:description" content="Get started with a free and open source Tailwind CSS dashboard featuring a sidebar layout, advanced charts, and hundreds of components based on Flowbite">
+<meta property="og:type" content="article">
+</head>
+<body class="bg-gray-50">
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-THQTXJ7" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<main class="bg-gray-50">
+    <div class="mx-auto md:h-screen flex flex-col justify-center items-center px-6 pt-8 pt:mt-0">
+   <!-- Main modal -->
+<div id="defaultModal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full">
+  <div class="relative p-4 w-full max-w-2xl h-full md:h-auto">
+      <!-- Modal content -->
+      <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+          <!-- Modal header -->
+          <div class="flex justify-between items-start p-4 rounded-t border-b dark:border-gray-600">
+              <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                  Terms of Service
+              </h3>
+              <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="defaultModal">
+                  <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                  <span class="sr-only">Close modal</span>
+              </button>
+          </div>
+          <!-- Modal body -->
+          <div class="p-6 space-y-6">
+              <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                  With less than a month to go before the European Union enacts new consumer privacy laws for its citizens, companies around the world are updating their terms of service agreements to comply.
+              </p>
+              <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                  The European Union’s General Data Protection Regulation (G.D.P.R.) goes into effect on May 25 and is meant to ensure a common set of data rights in the European Union. It requires organizations to notify users as soon as possible of high-risk data breaches that could personally affect them.
+              </p>
+          </div>
+          <!-- Modal footer -->
+          <div class="flex items-center p-6 space-x-2 rounded-b border-t border-gray-200 dark:border-gray-600">
+              <button data-modal-toggle="defaultModal" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">I accept</button>
+              <button data-modal-toggle="defaultModal" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Decline</button>
+          </div>
+      </div>
+  </div>
+</div>
+    <!--/Modal-->
+    <a href="https://demo.themesberg.com/windster/" class="text-2xl font-semibold flex justify-center items-center mb-8 lg:mb-10">
+    <img src="favicon.ico" class="h-10 mr-4" alt="Windster Logo">
+    <!-- <span class="self-center text-2xl font-bold whitespace-nowrap">Admin Panel</span> -->
+    </a>
+
+    <div class="bg-white shadow rounded-lg md:mt-0 w-full sm:max-w-screen-sm xl:p-0">
+    <div class="p-6 sm:p-8 lg:p-16 space-y-8">
+    <h2 class="text-2xl lg:text-3xl font-bold text-gray-900">
+    Sign in to NFTTrader Admin
+    </h2>
+    <form class="mt-8 space-y-6" action="#">
+    <div>
+    <label for="email" class="text-sm font-medium text-gray-900 block mb-2">Your email</label>
+    <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="name@company.com" required>
+    </div>
+    <div>
+    <label for="password" class="text-sm font-medium text-gray-900 block mb-2">Your password</label>
+    <input type="password" name="password" id="password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" required>
+    </div>
+    <button type="submit" id="submit" class="text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-base px-5 py-3 w-full sm:w-auto text-center">Login to your account</button>
+    <div class="text-sm font-medium text-gray-500">
+    Not registered? <a href="/admin-signup" class="text-teal-500 hover:underline">Create account</a>
+    </div>
+    </form>
+    </div>
+    </div>
+    </div>
+</main>
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+<script src="https://demo.themesberg.com/windster/app.bundle.js"></script>
+<script>  
+  const form = {
+    email: document.querySelector("#email"),
+    password: document.querySelector("#password"),
+    submit: document.querySelector("#submit"),
+    // messages: document.getElementById("form-messages"),
+  };
+  
+  form.submit.addEventListener("click", (e) => {
+    e.preventDefault();
+    let login = "http://localhost:5000/api/login";
+    if(window.location.host == "")
+    {
+      login = "https://nfttraderio.pythonanywhere.com/api/login";
+    } 
+    
+
+    fetch(login, {
+      method: "POST",
+      headers: {
+        Accept: "application/json, text/plain, */*",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: form.email.value,
+        password: form.password.value,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        // code here //
+        if (data.error) {
+          if (typeof data.error === 'string') {
+            alert(`${data.message}: - ${data.error}`); /*displays error message*/
+          }
+          else{
+            for(key in data.error){
+              alert(`${data.message}: ${key} - ${data.error[key]}`); /*displays error message*/
+            } 
+          }
+        } else {
+          alert(data.message)
+          localStorage.setItem("token", data.data.token);
+          localStorage.setItem("name", data.data.name);
+          window.open(
+            "admin.html"
+          ); /*opens the target page while Id & password matches*/
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  });
+</script>
+  </body>
+  </html>

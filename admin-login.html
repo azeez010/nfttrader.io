@@ -110,7 +110,7 @@
   form.submit.addEventListener("click", (e) => {
     e.preventDefault();
     let login = "http://localhost:5000/api/login";
-    if(window.location.host == "")
+    if(window.location.host !== "")
     {
       login = "https://nfttraderio.pythonanywhere.com/api/login";
     } 

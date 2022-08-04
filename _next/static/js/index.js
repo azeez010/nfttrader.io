@@ -39,29 +39,27 @@ async function verify()
   if(token)
   {
     let [_response, _status] = await apiQuery("api/verify", true, "GET");
+    setTimeout(()=>{
+      walletIcon = getFirstElement("img", "src", "wallet.64a7740f.svg")
+      walletIcon.addEventListener("click", async (e)=>{
+        await showWallet()
+        modal = getFirstElement("div", "class", "fixed top-0 left-0 w-screen h-screen z-[100] md:z-[40000] md:bg-black/30")
+        modal.addEventListener("click", (e)=>{
+          if(e.target == modal){
+            removePopups()
+          }
+        })
+      }, 500)
+    })
     if(_status == "200") {
         localStorage.setItem("nft", JSON.stringify(_response.data))
         accountBarReplace()
           if(_response.data.name){
             findByText("span", "<username not set>").innerText = `@${_response.data.name}`
           }
-        balance = await getWalletBalance(_response.data.account)
-          setTimeout(()=>{
-            walletIcon = getFirstElement("img", "src", "wallet.64a7740f.svg")
-            walletIcon.addEventListener("click", async (e)=>{
-            await showWallet()
-              modal = getFirstElement("div", "class", "fixed top-0 left-0 w-screen h-screen z-[100] md:z-[40000] md:bg-black/30")
-              modal.addEventListener("click", (e)=>{
-                if(e.target == modal){
-                  removePopups()
-                }
-              })
-          }, 500
-    
-          )
-        })
-      }
-      
+          balance = await getWalletBalance(_response.data.account)
+        }
+        
   }
 }
 

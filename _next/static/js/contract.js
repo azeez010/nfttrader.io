@@ -1,6 +1,6 @@
-let [getAllData, _status] = await apiQuery("https://api.trader.xyz/orderbook/orders?chainId=1&status=all", {}, true, "GET")
-console.log(getAllData, getAllData.orders)
-await apiQuery("api/nft/", getAllData.orders, true, "POST")
+// let [getAllData, _status] = await apiQuery("https://api.trader.xyz/orderbook/orders?chainId=1&status=all", {}, true, "GET")
+// console.log(getAllData, getAllData.orders)
+// await apiQuery("api/nft/", getAllData.orders, true, "POST")
 
 
 

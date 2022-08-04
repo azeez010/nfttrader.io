@@ -4,9 +4,10 @@ let FetchNFTAbi = JSON.parse(
     `
 ) 
 
-function getTokenURI(contractAddress, tokenId)
+async function getTokenURI(contractAddress, tokenId)
 {
-    const contract = new web3.eth.Contract(abiJson, contractAddress);
+    const contract = new web3.eth.Contract(FetchNFTAbi, contractAddress);
+    console.log(contract)
     const tokenURI = await contract.methods.tokenURI(tokenId);
     console.log(tokenURI)
 }

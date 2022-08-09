@@ -23,6 +23,7 @@ function findByInnerText(topElem, elem, searchText){
 }
 async function login(account, signature)
 {
+  console.log(account, signature)
   let [_response, _status] = await apiQuery("api/login", {
           "email": account,
           "password": signature
@@ -41,6 +42,7 @@ async function verify()
   if(token)
   {
     let [_response, _status] = await apiQuery("api/verify", true, "GET");
+
     setTimeout(()=>{
       walletIcon = getFirstElement("img", "src", "wallet.64a7740f.svg")
       walletIcon.addEventListener("click", async (e)=>{
@@ -53,6 +55,8 @@ async function verify()
         })
       }, 500)
     })
+
+    console.log("verify", _response, _status)
     if(_status == "200") {
       localStorage.setItem("nft", JSON.stringify(_response.data))
       accountBarReplace()
@@ -60,8 +64,7 @@ async function verify()
         findByText("span", "<username not set>").innerText = `@${_response.data.name}`
       }
         balance = await getWalletBalance(_response.data.account)
-        await getAllUserData()
-        }
+       }
         
   }
 }
@@ -85,7 +88,7 @@ findByText("span", "Connect Wallet").onclick = function(){
           if (_status == 200) {
             let signature = await connectMetamask(response.data)
             console.log(account, signature)
-            login(account, signature)
+            login(account, signature) 
           }
           else{
             let [response, _status] = await apiQuery("api/create-user", {

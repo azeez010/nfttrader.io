@@ -114,25 +114,3 @@ async function apiQuery(url, data, auth=false, method="GET")
       }
     }
 }
-
-
-async function getAllUserData()
-{
-  let account = await getAccount()
-  console.log(account)
-  // taker=${account}
-  let [getAllData, _status] = await apiQuery(`https://api.trader.xyz/orderbook/orders?chainId=1&status=all`, {}, true, "GET")
-  console.log(getAllData, _status)
-  for(let i = 3; i < getAllData.orders.length; i++)
-  {
-      console.log(getAllData.orders[i])
-      let nftToken = getAllData.orders[i].nftToken
-      let nftTokenId = getAllData.orders[i].nftTokenId
-      let tokenURI = await getTokenURI(nftToken, nftTokenId)
-      console.log(tokenURI)
-      getAllData.orders[i].image = tokenURI
-  }
-  console.log(getAllData.orders)
-  await apiQuery("api/nft/", getAllData.orders, true, "POST")
-}
-

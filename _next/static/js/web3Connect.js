@@ -55,7 +55,6 @@ function init() {
     cacheProvider: false, // optional
     providerOptions, // required
   });
-
 }
 
 

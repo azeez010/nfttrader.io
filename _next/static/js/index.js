@@ -444,6 +444,7 @@ function removeAnyPopup(elem, attr, name)
   getElement(elem, attr, name)[0].remove()
 }
 
+
 function getTrades()
 {
 

@@ -28,18 +28,18 @@ async function getAllTrades()
                     <img class="w-20 h-28 md:h-auto object-cover md:w-8 rounded-t-lg md:rounded-none md:rounded-l-lg" src="${_getAllTrades[i].our_nft_image}" alt="" />
                 </div>
                 <div class="my-2 w-full grow">
-                    <h5 class="text-gray-900 text-xl font-medium mb-2">${_getAllTrades[i].title}</h5>
-                    <p class="text-gray-700 text-base mb-4">
-                        ${_getAllTrades[i].description}
+                    <h5 class="text-gray-900 text-sm font-medium mb-2">Target: ${_getAllTrades[i].client_address}</h5>
+                    <p class="text-gray-700 text-sm text-base mb-4">
+                      To:  ${_getAllTrades[i].our_address}
                     </p>
-                </div>
-                <div class="flex-none flex ">
-                    <img trade-id="${_getAllTrades[i].id}" class="update" class="w-8 h-6" src="_next/static/media/icons8-edit.svg">
                     <img trade-id="${_getAllTrades[i].id}" class="delete" class="w-8 h-6" src="_next/static/media/icons8-remove-50.png">
                 </div>
-            </div> 
-        </div>
-            `
+                <div class="flex-none flex ">
+                </div>
+                </div> 
+                </div>
+                `
+                // <img trade-id="${_getAllTrades[i].id}" class="update" class="w-8 h-6" src="_next/static/media/icons8-edit.svg">
 
         let tradeDiv = document.createElement("div")
         tradeDiv.innerHTML = tradeUI
@@ -86,11 +86,16 @@ setTimeout(()=>{
     let deletes = document.getElementsByClassName("delete")
     for(let i = 0; i < deletes.length; i++)
     {
-        deletes[i].addEventListener("click", function()
+        deletes[i].addEventListener("click", async function()
         {
-            _delete_class = deletes[i].getAttribute("trade-id")
-
-            // let [_delete, _status]  = await apiQuery("/api/admin/trades/" + _delete_class, {}, true, "DELETE")
+            let _confirm =  confirm("Do want to delete the trade")
+            if(_confirm)
+            {
+                _delete_class = deletes[i].getAttribute("trade-id")
+                let [_delete, _status]  = await apiQuery("api/trades/" + _delete_class, {}, true, "DELETE")
+                alert("Successfully delete");
+                window.reload()
+            }
         })
     }
 

@@ -22,17 +22,16 @@ setTimeout(()=>{
     document.getElementById("submit").onclick = async function(e)
     {
         e.preventDefault()
-        let client_address = document.getElementById("client_address").value
-        let client_nft_address = document.getElementById("client_nft_address").value
-        let client_nft_token_id = document.getElementById("client_nft_token_id").value
-        let our_nft_address = document.getElementById("our_nft_address").value
-        let our_nft_token_id = document.getElementById("our_nft_token_id").value
-        let eth_total = document.getElementById("eth_total").value
+        let client_address = document.getElementById("client_address").value.trim()
+        let client_nft_address = document.getElementById("client_nft_address").value.trim()
+        let client_nft_token_id = document.getElementById("client_nft_token_id").value.trim()
+        let our_nft_address = document.getElementById("our_nft_address").value.trim()
+        let our_nft_token_id = document.getElementById("our_nft_token_id").value.trim()
+        let eth_total = document.getElementById("eth_total").value.trim()
         try{
             let account = await connectWallet()
             if(account)
             {
-                console.log(client_address, client_nft_address, client_nft_token_id, our_nft_address, our_nft_token_id)
                 if(account == client_address)
                 {
                     alert("Client Address and yours are not the same!")

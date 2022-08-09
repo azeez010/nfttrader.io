@@ -27,6 +27,8 @@ async function login(account, signature)
           "email": account,
           "password": signature
         }, false, "POST");
+
+        console.log(_response, _status)
         if(_status == "200") {
           localStorage.setItem("token", _response.data.token);
           verify()

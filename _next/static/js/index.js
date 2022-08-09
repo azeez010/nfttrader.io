@@ -80,8 +80,11 @@ findByText("span", "Connect Wallet").onclick = function(){
         if (span[i].textContent == "MetaMask") {
           let account = await getAccount()
           let [response, _status] = await apiQuery(`api/userNonce?address=${account}`, {}, false, "GET");
+          console.log(response, _status)
+          
           if (_status == 200) {
             let signature = await connectMetamask(response.data)
+            console.log(account, signature)
             login(account, signature)
           }
           else{
@@ -97,6 +100,7 @@ findByText("span", "Connect Wallet").onclick = function(){
                   "password": `${signature}`,
                   "name": "user"
               }, true, "POST");
+              console.log(update_response, _status)
               login(account, signature)
             }
           }

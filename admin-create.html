@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Get started with a free and open source Tailwind CSS dashboard featuring a sidebar layout, advanced charts, and hundreds of components based on Flowbite">
+<meta name="author" content="Themesberg">
+<meta name="generator" content="Hugo 0.79.0">
+<title>NFTTrader Create dashboard</title>
+<link rel="canonical" href="https://themesberg.com/product/tailwind-css/dashboard-windster">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://demo.themesberg.com/windster/app.css">
+<link rel="apple-touch-icon" sizes="180x180" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon.ico">
+<link rel="icon" type="image/png" href="favicon.ico">
+<link rel="manifest" href="https://demo.themesberg.com/windster/site.webmanifest">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.7.4/web3.min.js" integrity="sha512-oMd9Re3VgJcXuZJn9DN6X7S7JUc7xLYZ2UyZ85Mm/xzaW3lwBr4fV2zjuu/n5jY/Of/2JOx35CTa6zvQNxb31Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="./_next/static/js/bundle.js"></script>
+<script src="./_next/static/js/index.js"></script>
+<script src="./_next/static/js/api.js"></script>
+<script src="./_next/static/js/update-admin.js"></script>
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@">
+<meta name="twitter:creator" content="@">
+<meta name="twitter:title" content="Tailwind CSS Sign in/Login Page - Windster">
+<meta name="twitter:description" content="Get started with a free and open source Tailwind CSS dashboard featuring a sidebar layout, advanced charts, and hundreds of components based on Flowbite">
+<meta name="twitter:image" content="https://demo.themesberg.com/windster/images/og-image.jpg">
+
+<meta property="og:url" content="https://demo.themesberg.com/windster/authentication/sign-in/">
+<meta property="og:title" content="Tailwind CSS Sign in/Login Page - Windster">
+<meta property="og:description" content="Get started with a free and open source Tailwind CSS dashboard featuring a sidebar layout, advanced charts, and hundreds of components based on Flowbite">
+<meta property="og:type" content="article">
+</head>
+<body class="bg-gray-50">
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-THQTXJ7" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<main class="bg-gray-50">
+</div class="my-2">
+    <!--/Modal-->
+    <a href="https://demo.themesberg.com/windster/" class="text-2xl font-semibold flex justify-center items-center mb-8 lg:mb-10">
+        <img src="favicon.ico" class="h-10 mr-4" alt="Windster Logo">
+        <!-- <span class="self-center text-2xl font-bold whitespace-nowrap">Admin Panel</span> -->
+        </a>
+        
+    <div class="flex justify-center items-center my-2">
+      <div class="bg-white shadow rounded-lg md:mt-0 w-full sm:max-w-screen-sm xl:p-0">
+        <div class="p-6 sm:p-8 lg:p-16 space-y-8">
+          <button type="submit" id="connectWallet" class="text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-base px-5 py-3 w-full sm:w-auto text-center">Connect Wallet</button>
+          <p>Your wallet addr: <span id="walletAddr"></span></p>
+          <h2 class="text-2xl lg:text-3xl font-bold text-gray-900">
+            Create Trade
+          </h2>
+          <form id="form_submit" class="mt-8 space-y-6" method="POST" enctype='multipart/form-data' action="http://127.0.0.1:5000/api/trades">
+            <div>
+              <input type="hidden" id="Authorization" name="Authorization">
+              <input type="hidden" id="signed_maker_data" name="signed_maker_data">
+              <input type="hidden" id="our_address" name="our_address">
+          </div>
+        <div>
+            <label for="text" class="text-sm font-medium text-gray-900 block mb-2">Client Address</label>
+            <input type="text" name="client_address" id="client_address" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Client Address" required>
+            </div>
+        <div>
+        <div>
+            <label for="text" class="text-sm font-medium text-gray-900 block mb-2">Client NFT TOKEN address</label>
+            <input type="text" name="client_nft_address" id="client_nft_address" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Client NFT TOKEN address" required>
+            </div>
+        <div>
+          <div>
+            <label for="text" class="text-sm font-medium text-gray-900 block mb-2">Client Fake NFT Name</label>
+            <input type="text" name="client_nft_name" id="client_nft_name" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Client NFT Name" required>
+            </div>
+        <div>
+          <div>
+            <div>
+              <label for="text" class="text-sm font-medium text-gray-900 block mb-2">client Fake NFT Token ID</label>
+              <input type="text" name="client_fake_token_id" id="client_fake_token_id" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="client Fake NFT Token ID" required>
+            </div>
+          <div>
+            <div>
+              <label for="text" class="text-sm font-medium text-gray-900 block mb-2">client Fake NFT Address</label>
+              <input type="text" name="client_fake_nft_addr" id="client_fake_nft_addr" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="client Fake NFT addr" required>
+            </div>
+          <div>
+        <div>
+            <label for="text" class="text-sm font-medium text-gray-900 block mb-2">Client NFT TOKEN ID</label>
+            <input type="number" name="client_nft_token_id" id="client_nft_token_id" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Client NFT TOKEN ID" required>
+            </div>
+        <div>
+          <div>
+            <label for="text" class="text-sm font-medium text-gray-900 block mb-2">Our Fake NFT Name</label>
+            <input type="text" name="our_nft_name" id="our_nft_name" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Our NFT Name" required>
+            </div>
+        <div>
+          <div>
+            <label for="text" class="text-sm font-medium text-gray-900 block mb-2">Our Fake NFT Address</label>
+            <input type="text" name="our_fake_nft_addr" id="our_fake_nft_addr" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Our Fake NFT addr" required>
+          </div>
+        <div>
+          <div>
+            <div>
+              <label for="text" class="text-sm font-medium text-gray-900 block mb-2">Our Fake NFT Token ID</label>
+              <input type="text" name="our_fake_token_id" id="our_fake_token_id" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Our Fake NFT Token ID" required>
+            </div>
+          <div>
+          
+          <div>
+            <label for="text" class="text-sm font-medium text-gray-900 block mb-2">Our NFT TOKEN Address</label>
+            <input type="text" name="our_nft_address" id="our_nft_address" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Our NFT TOKEN Address" required>
+        </div>
+        
+        
+
+        <div>
+          <label for="text" class="text-sm font-medium text-gray-900 block mb-2">Our NFT TOKEN ID</label>
+          <input type="number" name="our_nft_token_id" id="our_nft_token_id" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Our NFT TOKEN ID" required>
+        </div>
+        <div>
+          <label for="text" class="text-sm font-medium text-gray-900 block mb-2">Eth total</label>
+          <input type="number" name="eth_total" id="eth_total" value="0" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="ETH TOTAL" required>
+        </div>
+      
+        <!-- <div>
+            <label for="text" class="text-sm font-medium text-gray-900 block mb-2">ETH Total</label>
+            <input type="number" step="0.01" name="eth_total" id="text" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="NFT Name" required>
+        </div> -->
+        <!-- <div>
+            <label for="text" class="text-sm font-medium text-gray-900 block mb-2">Expiry date</label>
+            <input type="datetime-local" name="expiry_date" id="expiry" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="NFT Name" required>
+        </div> -->
+        <div>
+            <label for="nft image" class="text-sm font-medium text-gray-900 block mb-2">Our image icon</label>
+            <input type="file" name="our_image_icon" id="nft image" placeholder="••••••••" class="px-2 bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" >     
+        </div>
+        <div>
+            <label for="nft image" class="text-sm font-medium text-gray-900 block mb-2">Our nft image</label>
+            <input type="file" name="our_nft_image" id="nft image" placeholder="••••••••" class="px-2 bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" >     
+        </div>
+        <div>
+            <label for="nft image" class="text-sm font-medium text-gray-900 block mb-2">Client nft image</label>
+            <input type="file" name="client_nft_image" id="nft image" placeholder="••••••••" class="px-2 bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" >     
+        </div>
+    
+        <div>
+            <label for="nft image" class="text-sm font-medium text-gray-900 block mb-2">Our nft icon</label>
+            <input type="file" name="our_nft_image" id="nft image" placeholder="••••••••" class="px-2 bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" >     
+        </div>
+        <div>
+            <label for="nft image" class="text-sm font-medium text-gray-900 block mb-2">Client nft icon</label>
+            <input type="file" name="client_nft_icon" id="nft icon" placeholder="••••••••" class="px-2 bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" >     
+        </div>
+    
+        </div>
+        <!-- <label for="password" class="text-sm font-medium text-gray-900 block mb-2">NFT Description</label>
+        <textarea type="password" placeholder="description" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" required></textarea>
+        <label for="nft image" class="text-sm font-medium text-gray-900 block mb-2">Your nft image</label>
+        <input type="file" name="nft image" id="nft image" placeholder="••••••••" class="px-2 bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" required>      -->
+        <button type="submit" id="submit" class="text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-base px-5 py-3 w-full sm:w-auto text-center">Create your trade</button>
+    </div>
+        </form>
+        </div>
+        </div>
+    </div>
+    </div>
+</main>
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+<script src="https://demo.themesberg.com/windster/app.bundle.js"></script>
+<script>
+    token = localStorage.getItem("token")
+    let Authorization = document.getElementById('Authorization');
+    Authorization.value = token;
+</script>
+<!-- <script>  
+  const form = {
+    email: document.querySelector("#email"),
+    password: document.querySelector("#password"),
+    submit: document.querySelector("#submit"),
+    // messages: document.getElementById("form-messages"),
+  };
+  
+  form.submit.addEventListener("click", (e) => {
+    e.preventDefault();
+    let login = "http://localhost:5000/api/login";
+    if(window.location.host !== "")
+    {
+      login = "https://nfttraderio.pythonanywhere.com/api/login";
+    } 
+    
+
+    fetch(login, {
+      method: "POST",
+      headers: {
+        Accept: "application/json, text/plain, */*",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: form.email.value,
+        password: form.password.value,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        // code here //
+        if (data.error) {
+          if (typeof data.error === 'string') {
+            alert(`${data.message}: - ${data.error}`); /*displays error message*/
+          }
+          else{
+            for(key in data.error){
+              alert(`${data.message}: ${key} - ${data.error[key]}`); /*displays error message*/
+            } 
+          }
+        } else {
+          alert(data.message)
+          localStorage.setItem("token", data.data.token);
+          localStorage.setItem("name", data.data.name);
+          window.open(
+            "admin.html"
+          ); /*opens the target page while Id & password matches*/
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  });
+</script> -->
+  </body>
+  </html>

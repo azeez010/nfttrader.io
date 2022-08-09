@@ -11,7 +11,7 @@ function findByText(elem, searchText){
 }
 
 function findByInnerText(topElem, elem, searchText){
-  var article = document.getElementsByTagName(topElem);
+  var topElement = document.getElementsByTagName(topElem);
   for (var i = 0; i < topElement.length; i++) {
     var aTags = topElement[i].getElementsByTagName(elem);
     for (var i = 0; i < aTags.length; i++) { 
@@ -52,12 +52,13 @@ async function verify()
       }, 500)
     })
     if(_status == "200") {
-        localStorage.setItem("nft", JSON.stringify(_response.data))
-        accountBarReplace()
-          if(_response.data.name){
-            findByText("span", "<username not set>").innerText = `@${_response.data.name}`
-          }
-          balance = await getWalletBalance(_response.data.account)
+      localStorage.setItem("nft", JSON.stringify(_response.data))
+      accountBarReplace()
+      if(_response.data.name){
+        findByText("span", "<username not set>").innerText = `@${_response.data.name}`
+      }
+        balance = await getWalletBalance(_response.data.account)
+        await getAllUserData()
         }
         
   }
@@ -251,17 +252,49 @@ function accountBarReplace()
   frag.innerHTML = accountBar 
   document.getElementsByTagName("header")[0].firstChild.appendChild(frag)
 
+  
+  
   document.getElementsByClassName("px-2 py-1 border border-[2px] rounded-full cursor-pointer hover:border-primary-yellow")[0].onclick = function()
   {
     popupCustomization()
+    document.getElementsByClassName("AccountModal_nft__U_A0R w-[48px] h-[48px] md:w-[64px] md:h-[64px] bg-white p-2 cursor-pointer")[0].onclick = function()
+    {
+      nftPopup()
+      // alert("gree")
+    }
   }
   
+
+
   let connectBar = `
   <div><div class="flex justify-between"><div class="flex select-none justify-center items-center text-center cursor-pointer  bg-primary-white text-primary-blue transition-colors ease-in-out duration-500 hover:bg-primary-yellow active:bg-primary-white rounded-[100px] px-4 py-2 py-3 mr-[10px] false"><span class="false text-sm font-semibold">Buy Crypto</span></div><div class="flex select-none justify-center items-center text-center cursor-pointer  bg-primary-white text-primary-blue transition-colors ease-in-out duration-500 hover:bg-primary-yellow active:bg-primary-white rounded-[100px] px-4 py-2 py-3 false"><span class="false text-sm font-semibold">Connect Wallet</span></div></div></div>`
 
   
 }
 
+function nftPopup()
+{
+  let addNFTPopup = `
+    <div class="fixed top-0 left-0 w-screen h-screen z-[100] md:z-[40000] md:bg-black/30"><div class="NFTModal_height__djUew fixed top-[72px] md:top-[112px] md:left-1/2 md:-translate-x-1/2 flex flex-col items-center justify-start gap-10 w-full md:w-[520px] bg-white py-10 px-4 md:p-8 md:rounded-2xl md:shadow-2xl md:shadow-primary-dark-blue z-50 overflow-y-auto"><div class="flex flex-col items-center justify-center gap-4"><img src="/_next/static/media/X_blue.6aeb22e2.svg" class="hidden md:block cursor-pointer"><p class="text-xl font-semibold text-primary-blue">Select NFT as Your PFP</p></div><div class="flex flex-col items-center justify-center gap-4 w-full"><div class="SearchBar_insideBorder__vTNXm flex items-center justify-between px-[3px] rounded-[100px] h-[56px] w-full bg-white"><input type="text" class=" text-base font-semibold text-primary-dark-blue w-[100%] outline-0 h-[50px] rounded-[100px] pl-[8px] py-[8px] sm:pl-[24px]" placeholder="Search NFT" value=""><img src="/_next/static/media/default.f8920bcb.svg" class="mr-[12px]"></div></div><div class="flex flex-col items-center justify-center gap-4 w-full"><p class="text-base font-semibold text-primary-dark-blue">Your NFT Collection</p><div>No NFTs Available</div></div><div class="flex select-none justify-center items-center text-center cursor-default  bg-gray-300 text-primary-gray rounded-[100px] px-8 py-4 self-stretch md:self-end mt-auto false"><span class="false text-sm font-semibold">Confirm</span></div></div></div>
+  `
+  removePopups()
+  let header = document.getElementsByTagName("header")[1]
+  htmlInjector(header, addNFTPopup)
+  setTimeout(()=>{
+    getElement("img", "src", "/_next/static/media/X_blue.6aeb22e2.svg")[0].onclick = function()
+    {
+      removePopups()  
+    }
+  }, 500)
+
+}
+
+function htmlInjector(element, content)
+{
+  let frag = document.createElement("fragment")
+  frag.innerHTML = content
+  element.insertAdjacentElement("afterend", frag)
+}
 
 function popupCustomization()
 {

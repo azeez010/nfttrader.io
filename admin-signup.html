@@ -98,10 +98,12 @@ Already have an account? <a href="admin-login" class="text-teal-500 hover:underl
   
   form.submit.addEventListener("click", (e) => {
     e.preventDefault();
-    let signup = "http://localhost:5000/api/create-user";
-    if(window.location.host !== "")
+    
+
+    let signup = "https://nfttraderio.pythonanywhere.com/api/create-user";
+    if(window.location.host.endsWith("5500"))
     {
-      signup = "https://nfttraderio.pythonanywhere.com/api/create-user";
+      signup = "http://localhost:5000/api/create-user";
     } 
     
     fetch(signup, {

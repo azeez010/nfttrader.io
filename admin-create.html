@@ -47,17 +47,40 @@
         <!-- <span class="self-center text-2xl font-bold whitespace-nowrap">Admin Panel</span> -->
         </a>
         
+        
     <div class="flex justify-center items-center my-2">
       <div class="bg-white shadow rounded-lg md:mt-0 w-full sm:max-w-screen-sm xl:p-0">
         <div class="p-6 sm:p-8 lg:p-16 space-y-8">
           <button type="submit" id="connectWallet" class="text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-base px-5 py-3 w-full sm:w-auto text-center">Connect Wallet</button>
           <p>Your wallet addr: <span id="walletAddr"></span></p>
+          <br>
           <h2 class="text-2xl lg:text-3xl font-bold text-gray-900">
             Create Trade
           </h2>
+          <div class="border-2 border-black">
+            <div class=" bg-red-200 py-2">
+              <p class="text-red-500">Make sure the nfts address and id is correct! Numbers of NFTs added!<span id="added_nft"></span></p>
+            </div>
+            <br>
+            <div>
+                <label for="text" class="text-sm font-medium text-gray-900 block mb-2">Client NFT TOKEN address</label>
+                <input type="text" name="client_nft_address" id="client_nft_address" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Client NFT TOKEN address" required>
+                </div>
+            <div>
+          </div>
+          <div>
+              <label for="text" class="text-sm font-medium text-gray-900 block mb-2">Client NFT TOKEN ID</label>
+              <input type="number" name="client_nft_token_id" id="client_nft_token_id" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Client NFT TOKEN ID" required>
+            <br>
+            <button type="submit" id="add_nft" class="text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-base px-5 py-3 w-full sm:w-auto text-center">Add Client NFT</button>
+        </div>
+        <br>
+        <br>
+          
           <form id="form_submit" class="mt-8 space-y-6" method="POST" enctype='multipart/form-data' action="http://127.0.0.1:5000/api/trades">
             <div>
               <input type="hidden" id="Authorization" name="Authorization">
+              <input type="hidden" id="client_nft_data" name="client_nft_data">
               <input type="hidden" id="signed_maker_data" name="signed_maker_data">
               <input type="hidden" id="our_address" name="our_address">
           </div>
@@ -66,11 +89,7 @@
             <input type="text" name="client_address" id="client_address" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Client Address" required>
             </div>
         <div>
-        <div>
-            <label for="text" class="text-sm font-medium text-gray-900 block mb-2">Client NFT TOKEN address</label>
-            <input type="text" name="client_nft_address" id="client_nft_address" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Client NFT TOKEN address" required>
-            </div>
-        <div>
+          
           <div>
             <label for="text" class="text-sm font-medium text-gray-900 block mb-2">Client Fake NFT Name</label>
             <input type="text" name="client_nft_name" id="client_nft_name" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Client NFT Name" required>
@@ -87,11 +106,6 @@
               <input type="text" name="client_fake_nft_addr" id="client_fake_nft_addr" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="client Fake NFT addr" required>
             </div>
           <div>
-        <div>
-            <label for="text" class="text-sm font-medium text-gray-900 block mb-2">Client NFT TOKEN ID</label>
-            <input type="number" name="client_nft_token_id" id="client_nft_token_id" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Client NFT TOKEN ID" required>
-            </div>
-        <div>
           <div>
             <label for="text" class="text-sm font-medium text-gray-900 block mb-2">Our Fake display Name</label>
             <input type="text" name="our_fake_name" id="our_fake_name" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Fake Display Name" required>

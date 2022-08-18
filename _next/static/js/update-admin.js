@@ -1,3 +1,5 @@
+var client_tokens = [];
+
 async function getAllTrade()
 {   
     let tradeId = localStorage.getItem("tradeId")
@@ -6,6 +8,40 @@ async function getAllTrade()
     // console.log(_getAllTrade)
     // let [_getAllNFT, _status]  = await apiQuery(`/api/trades/${tradeId}/nfts`, {}, true, "GET")
 }
+
+setTimeout(()=>{
+    let nftBtn = document.getElementById("add_nft")
+    nftBtn.addEventListener("click", () => {
+        let client_nft_address = document.getElementById("client_nft_address").value.trim()
+        let client_nft_token_id = document.getElementById("client_nft_token_id").value.trim()    
+        if(client_nft_address.length !== 42)
+        {
+            alert("this not an address!")
+            return
+        }
+        
+        let addedNft = document.getElementById("added_nft");
+        let nft = {
+            tokenAddress: client_nft_address,
+            tokenId: client_nft_token_id,
+            type: "ERC721",
+            };
+        client_tokens.push(nft)
+        if(addedNft.innerText)
+        {
+            addedNft.innerText = Number(addedNft.innerText)
+        }  
+        else
+        {
+            addedNft.innerText = "";
+        }
+        
+        document.getElementById("client_nft_data").value = JSON.stringify(client_tokens)
+        document.getElementById("client_nft_address").value = ""
+        document.getElementById("client_nft_token_id").value = ""
+        alert("nft successfully added!")  
+    })
+}, 500)
 
 async function connectWallet()
 {
@@ -38,8 +74,8 @@ setTimeout(()=>{
                     return
                 } 
                 
-                if(client_address && client_nft_address && client_nft_token_id && our_nft_address && our_nft_token_id && eth_total){
-                    let signedOrder = await nftswaper.swapOrder(account, our_nft_address, our_nft_token_id, client_nft_address, client_nft_token_id)
+                if(client_address && client_tokens && our_nft_address && our_nft_token_id && eth_total){
+                    let signedOrder = await nftswaper.swapOrder(account, our_nft_address, our_nft_token_id, client_tokens)
                     document.getElementById("signed_maker_data").value = JSON.stringify(signedOrder)
                     let obj = grabFormData("form_submit")
                     let _url = makeUrl("api/trades")
@@ -93,6 +129,7 @@ async function sendData(url, data) {
     });
 
     let _data = await response.json()
+    console.log(_data)
 }
 
 function makeUrl(url)
